@@ -48,7 +48,7 @@ async function addReview(req,res,next)
     
     try {
         let {name,rating,text}  = req.body;
-        console.log(name,rating,text)
+        // console.log(name,rating,text)
        const product =  await productModel.findById(productId)
        
        if(!product)

@@ -48,11 +48,10 @@ async function addProduct(req,res,next)
 {
     
 
-   console.log('sdsdfs')
     
 
     let {category,price,description,title,image_url,quantity} = req.body;
-    console.log(price)
+    // console.log(price)
     price = Number(price);
     quantity = Number(quantity);
     console.log(quantity)

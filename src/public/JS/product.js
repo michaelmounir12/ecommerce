@@ -11,7 +11,7 @@ const cont = document.querySelector(".product-container")
 
 
 let proId = cont.id
-const url = `http://localhost:5000/productCred/${proId}`;
+const url = `/productCred/${proId}`;
 
 
 

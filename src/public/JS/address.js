@@ -6,7 +6,7 @@ const params = new URLSearchParams(window.location.search);
 
         sub.addEventListener("click",()=>
         {
-             fetch("http://localhost:5000/checkout", {
+             fetch("/checkout", {
      
     method: "POST",
      

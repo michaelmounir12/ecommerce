@@ -1,7 +1,7 @@
 const btn = document.querySelector("button");
        const p = document.querySelector("p");
        const email = document.querySelector("input");
-       const url = "http://localhost:5000/forgotpassword";
+       const url = "/forgotpassword";
        btn.addEventListener("click",()=>
        {
         fetch(url, {

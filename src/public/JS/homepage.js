@@ -106,7 +106,7 @@ function createProduct(product)
     }
 
     cartbtn.addEventListener("click",()=>{
-        fetch(`http://localhost:5000/cart`,{
+        fetch(`/cart`,{
             method:"POST",
             body: JSON.stringify({
                 pId:productdiv.id
@@ -115,12 +115,12 @@ function createProduct(product)
             headers: {
                 "Content-type": "application/json"
             }
-        }).then(res=>res.json()).then(data=>console.log(data))
+        }).then(res=>res.json()).then()
     })
 
-    buybtn.addEventListener("click",()=>{window.location.href = `http://localhost:5000/address?src=buynow&p=${productdiv.id}`})
+    buybtn.addEventListener("click",()=>{window.location.href = `/address?src=buynow&p=${productdiv.id}`})
     img.addEventListener("click",()=>{
-        window.location.href = `http://localhost:5000/product/${productdiv.id}`
+        window.location.href = `/product/${productdiv.id}`
     })
     products.appendChild(productdiv);
 
@@ -128,7 +128,7 @@ function createProduct(product)
 
 }
 
-const url = 'http://localhost:5000/getproducts';
+const url = '/getproducts';
 
 let skip = 0;
 

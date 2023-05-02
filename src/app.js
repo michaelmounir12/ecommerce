@@ -9,6 +9,7 @@ const addressRout = require("./address");
 const checkoutRouter = require("./checkout/checkoutRouter");
 const {auth,unRestrictedauth, roleAuth}  = require("./authorization");
 const proRouter = require("./product");
+const compression = require("compression");
 const profile = require("./profile");
 const DashRouter = require("./dashboard");
 const cartRouter = require("./cart");
@@ -41,7 +42,7 @@ app.use(express.urlencoded({extended:true,limit:"10kb"}));
 
 app.use(express.static(path.join(__dirname,"public")));
 
-
+app.use(compression());
 app.use(unRestrictedauth)
 app.use("/login",redirect,loginRouter);
 app.use(resetPassword)

@@ -5,8 +5,8 @@
       btn.addEventListener("click",()=>
       {
         const proId = window.location.href.split("/")[4]
-        console.log(proId)
-        fetch(`http://localhost:5000/resetpass/${proId}`, {
+        // console.log(proId)
+        fetch(`/resetpass/${proId}`, {
      
      method: "POST",
       

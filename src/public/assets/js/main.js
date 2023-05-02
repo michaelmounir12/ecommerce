@@ -6,7 +6,7 @@ const mainContent = document.querySelector(".main-content");
 const signout = document.querySelector(".signOut");
 
 
-fetch('http://localhost:5000/HTML/dash.html')
+fetch('/HTML/dash.html')
   .then(response => {
     if (!response.ok) {
       throw new Error('Network response was not ok');
@@ -46,7 +46,7 @@ toggle.onclick = function () {
 
 Dash.addEventListener("click",()=>
 {
-  fetch('http://localhost:5000/HTML/dash.html')
+  fetch('/HTML/dash.html')
   .then(response => {
     if (!response.ok) {
       throw new Error('Network response was not ok');
@@ -64,7 +64,7 @@ Dash.addEventListener("click",()=>
 })
 addProduct.addEventListener("click",()=>
 {
-  fetch('http://localhost:5000/HTML/addProduct.html')
+  fetch('/HTML/addProduct.html')
   .then(response => {
     if (!response.ok) {
       throw new Error('Network response was not ok');
@@ -84,14 +84,12 @@ addProduct.addEventListener("click",()=>
 
       
       
-      console.log("sdas")
       
-      const url = "http://localhost:5000/products";
+      const url = "/products";
       
       
       sub.addEventListener("click",()=>
       {
-          console.log(desc.value)
       
           fetch(url, {
            
@@ -127,5 +125,5 @@ addProduct.addEventListener("click",()=>
 
 signout.addEventListener("click",async()=>
 {
-  await fetch("http://localhost:5000/signout")
+  await fetch("/signout")
 })

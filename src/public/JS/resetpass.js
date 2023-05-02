@@ -3,7 +3,7 @@ const email  = document.querySelector(".e").textContent.split(":")[1]
 const p = document.querySelector("p");
 const btn = document.querySelector(".resendbtn");
 
-const url = 'http://localhost:5000/resendCode';
+const url = '/resendCode';
 
 
 btn.addEventListener("click",()=>

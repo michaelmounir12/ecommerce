@@ -75,7 +75,7 @@ async function cartCheckout(req,res,next)
 //     quantity: Number(products[i].quantity),
   
 // }
-console.log(req.body)
+// console.log(req.body)
 let lineItems = []
 
 if(req.body.src === "cart")

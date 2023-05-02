@@ -17,7 +17,7 @@ let items = [
 
 button.onclick = ()=>
 {
-    fetch("http://localhost:5000/checkout", {
+    fetch("/checkout", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -40,13 +40,3 @@ button.onclick = ()=>
 
 
 
-// button.onclick = async()=>
-// {
-//     const response = await fetch("http://localhost:5000/checkout", {
-//         method: "POST",
-//         headers: { "Content-Type": "application/json" },
-//         body: JSON.stringify({ items }),
-//       });
-//      const session =await response.json();
-//      console.log(session)
-// }

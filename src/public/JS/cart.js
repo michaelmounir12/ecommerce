@@ -79,7 +79,7 @@ function createPro(product)
     select.addEventListener("change",(e)=>
         {
 
-          fetch("http://localhost:5000/cart", {
+          fetch("/cart", {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json'
@@ -88,17 +88,17 @@ function createPro(product)
           })
           .then(response => response.json())
           .then(data => {
-            console.log('Success:', data);
+            // console.log('Success:', data);
           })
           .catch((error) => {
-            console.error('Error:', error);
+            // console.error('Error:', error);
           });
           location.reload()
         })
 
         deletebtn.addEventListener("click",()=>
         {
-          fetch("http://localhost:5000/cart", {
+          fetch("/cart", {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json'
@@ -107,10 +107,10 @@ function createPro(product)
           })
           .then(response => response.json())
           .then(data => {
-            console.log('Success:', data);
+            // console.log('Success:', data);
           })
           .catch((error) => {
-            console.error('Error:', error);
+            // console.error('Error:', error);
           });
           location.reload()
         })
@@ -121,7 +121,7 @@ function createPro(product)
 
 }
 
-const url = "http://localhost:5000/cartproducts"
+const url = "/cartproducts"
 
 fetch(url, {
      
@@ -137,6 +137,6 @@ fetch(url, {
   
   )
   price.textContent =  `${data.totalPrice} EGP`;
-  probtn.addEventListener("click",()=>{window.location.href = `http://localhost:5000/address?src=cart`})
+  probtn.addEventListener("click",()=>{window.location.href = `/address?src=cart`})
 })
 

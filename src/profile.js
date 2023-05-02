@@ -14,7 +14,7 @@ function getProfilePage(req,res,next)
 
 async function resetPass(req,res,next)
 {
-    console.log("param",req.params)
+    // console.log("param",req.params)
     try {
         const pass = await bcrypt.hash(req.body.password,10)
       const user =   await userModel.findOneAndUpdate({_id:req.params.user},{password:pass,passwordConfirm:pass, passwordModifiedAt:Date.now()});
