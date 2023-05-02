@@ -1,0 +1,80 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+  }
+  
+  h1 {
+    text-align: center;
+    margin: 50px 0;
+  }
+  
+  table {
+    margin: 0 auto;
+    border-collapse: collapse;
+    width: 80%;
+    background-color: #fff;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  th, td {
+    text-align: left;
+    padding: 10px;
+  }
+  
+  th {
+    background-color: #332E2E;
+    color: #fff;
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  img {
+    width: 100px;
+    height: auto;
+  }
+  
+  select {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  button {
+    background-color: #332E2E;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  button:hover {
+    background-color: #4C4646;
+    cursor: pointer;
+  }
+  
+  .total-price {
+    text-align: right;
+    margin-top: 20px;
+    margin-right: 10%;
+    font-size: 24px;
+  }
+  
+  .proceed-to-buy {
+    background-color: #332E2E;
+    color: #fff;
+    padding: 20px 40px;
+    border: none;
+    border-radius: 5px;
+    font-size: 24px;
+    margin: 50px auto;
+    display: block;
+  }
+  
+  .proceed-to-buy:hover {
+    background-color: #4C4646;
+    cursor: pointer;
+  } 

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Product Details</title>
+  <link rel="stylesheet" href="/CSS/product.css">
+</head>
+<body>
+  <div id="{{id}}" class="product-container">
+    <div class="product-image">
+      <img src="" alt="Product Image">
+    </div>
+    <div class="product-details">
+      <div class="product-title"></div>
+      <div class="product-description"></div>
+      <div class="product-price"></div>
+      <div class="product-reviews">
+        <div class="product-rating">
+          <span class="product-rating-stars"></span>
+          <span class="product-rating-count"></span>
+        </div>
+        <div class="review-form">
+          <h1>Add Review</h1>
+          <form action="/addreview/{{id}}" method="post" >
+            <label for="review-name">Name:</label>
+            <input type="text" id="review-name" name="name" required>
+            <label for="review-rating">Rating:</label>
+            <select id="review-rating" name="rating" required>
+              <option value="">Select rating</option>
+              <option value="1">1 star</option>
+              <option value="2">2 stars</option>
+              <option value="3">3 stars</option>
+              <option value="4">4 stars</option>
+              <option value="5">5 stars</option>
+            </select>
+            <label for="review-text">Review:</label>
+            <textarea id="review-text" name="text" rows="3" required></textarea>
+            <input class="btn" type="submit" value="Submit Review">
+          </form>
+        </div>
+        <ul class="review-list">
+         
+        </ul>
+      </div>
+    </div>
+  </div>
+  <script src="/JS/product.js"></script>
+</body>
+</html>

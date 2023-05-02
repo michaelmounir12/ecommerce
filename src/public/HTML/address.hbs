@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Address Form</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+      }
+      
+      form {
+        width: 50%;
+        margin: 0 auto;
+        background-color: #fff;
+        border-radius: 5px;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      }
+      
+      h1 {
+        text-align: center;
+        margin-top: 0;
+      }
+      
+      label {
+        display: block;
+        margin-bottom: 10px;
+      }
+      
+      input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0,0,0,0.2);
+      }
+      
+      select {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0,0,0,0.2);
+      }
+      
+      button[type="submit"] {
+        background-color: #4CAF50;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        float: right;
+      }
+      
+      button[type="submit"]:hover {
+        background-color: #3e8e41;
+      }
+      
+      .form-group {
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="/address" method="post" >
+      <h1>Shipping Address</h1>
+      <div class="form-group">
+        <label  for="city" >City:</label>
+        <input value="{{city}}" type="text" id="city" name="city" value>
+      </div>
+      <div class="form-group">
+        <label for="street">Street:</label>
+        <input value="{{street}}" type="text" id="street" name="street">
+      </div>
+      <div class="form-group">
+        <label for="house-number">House Number:</label>
+        <input value="{{houseN}}" type="text" id="house-number" name="housenumber">
+      </div>
+      <button  type="submit">Submit</button>
+    </form>
+    <script src="/JS/address.js"></script>
+  </body>
+</html>
