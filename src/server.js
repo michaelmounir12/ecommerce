@@ -18,7 +18,7 @@ async function init()
 
 
 
-        server.listen(5000,(err)=>
+        server.listen(process.env.PORT,(err)=>
         {
             if(err)
             {throw new Error("cannot start server")};
