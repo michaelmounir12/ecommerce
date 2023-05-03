@@ -101,7 +101,7 @@ async function resetPass(req,res,next)
    
     const jwtToken = jwt.sign({id:user.id,name:user.name},process.env.TOKEN_SECRET,{expiresIn:"30d"})
     req.user = {id:user._id,name:user.name,role:user.role};
-    res.cookie("jwt",jwtToken,{httpOnly:true})
+    res.cookie("jwt",jwtToken,{httpOnly:true,secure:process.env.STATE==="dev"?false:true})
     res.status(200).redirect("/HTML/login.html")
 
    

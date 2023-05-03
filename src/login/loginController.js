@@ -58,7 +58,7 @@ async function postController(req,res,next)
 
      if(!user.accountConfirm ) return res.status(401).json({message:"please confirm your account"})
      const token = jwt.sign({id:user._id,name:user.name},process.env.TOKEN_SECRET,{expiresIn:"30d"})
-     res.cookie("jwt",token,{httpOnly:true}  )
+     res.cookie("jwt",token,{httpOnly:true,secure:process.env.STATE==="dev"?false:true}  )
      req.app.locals.user = {id:user._id,name:user.name,role:user.role};
      res.status(200).redirect("/home")
      

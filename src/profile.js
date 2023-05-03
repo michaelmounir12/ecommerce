@@ -21,7 +21,7 @@ async function resetPass(req,res,next)
       const user =   await userModel.findOneAndUpdate({_id:req.params.user},{password:pass,passwordConfirm:pass, passwordModifiedAt:Date.now()});
         res.clearCookie('jwt');
         const token = jwt.sign({id:user._id,name:user.name},process.env.TOKEN_SECRET,{expiresIn:"30d"})
-     res.cookie("jwt",token,{httpOnly:true}  )
+     res.cookie("jwt",token,{httpOnly:true,secure:process.env.STATE==="dev"?false:true}  )
      req.app.locals.user = {id:user._id,name:user.name,role:user.role};
         res.status(200).redirect("/home");
     } catch (error) {
