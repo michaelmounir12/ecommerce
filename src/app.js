@@ -46,7 +46,7 @@ app.use(express.static(path.join(__dirname,process.env.STATE ==="dev"?"public":"
 app.use(compression());
 app.use(unRestrictedauth)
 
-app.use("/",(req,res)=>
+app.get("/",(req,res)=>
 {
     res.redirect("/home");
 })
