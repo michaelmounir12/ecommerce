@@ -44,6 +44,12 @@ app.use(express.static(path.join(__dirname,"public")));
 
 app.use(compression());
 app.use(unRestrictedauth)
+
+app.use("/",(req,res)=>
+{
+    res.redirect("/home");
+})
+
 app.use("/login",redirect,loginRouter);
 app.use(resetPassword)
 
