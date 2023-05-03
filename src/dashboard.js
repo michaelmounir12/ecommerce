@@ -6,7 +6,7 @@ router.get("/dashboard",getDashBoard)
 function getDashBoard(req,res,next)
 {
 
-   res.sendFile(path.join(__dirname,process.env.STATE ==="dev"?"public":"..","dist","index.html"));
+   res.sendFile(path.join(__dirname,process.env.STATE ==="dev"?"public/dash-tool.html":"../dist/dash-tool.html",));
 
 }
 

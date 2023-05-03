@@ -64,7 +64,7 @@ Dash.addEventListener("click",()=>
 })
 addProduct.addEventListener("click",()=>
 {
-  fetch('/HTML/addProduct.html')
+  fetch('/addProduct.html')
   .then(response => {
     if (!response.ok) {
       throw new Error('Network response was not ok');
