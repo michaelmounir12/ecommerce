@@ -10,7 +10,7 @@ router.post("/resetpass/:user",resetPass)
 
 function getProfilePage(req,res,next)
 {
-    res.sendFile(path.join(__dirname,process.env.STATE ==="dev"?"public":"dist","HTML","profile.html"));
+    res.sendFile(path.join(__dirname,process.env.STATE ==="dev"?"public":"..","dist","profile.html"));
 }
 
 async function resetPass(req,res,next)

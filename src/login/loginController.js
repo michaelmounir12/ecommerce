@@ -22,7 +22,7 @@ const validschema = Joi.object({
 
 function getController(req,res,next)
 {
-   res.status(200).sendFile(path.join(__dirname,"..",process.env.STATE ==="dev"?"public":"dist","HTML","login.html"));
+   res.status(200).sendFile(path.join(__dirname,"..",process.env.STATE ==="dev"?"public":"..","dist","login.html"));
 }
 
 
