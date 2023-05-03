@@ -12,6 +12,7 @@ const proRouter = require("./product");
 const compression = require("compression");
 const profile = require("./profile");
 const DashRouter = require("./dashboard");
+require("dotenv").config();
 const cartRouter = require("./cart");
 const signOutRouter = require("./signout");
 const helmet = require("helmet");
@@ -29,7 +30,7 @@ function redirect(req,res,next){
 
 
 app.set('view engine', "hbs");
-app.set('views', path.join(__dirname,"public","HTML"))
+app.set('views', path.join(__dirname,process.env.STATE ==="dev"?"public":"dist","HTML"))
 app.use(helmet())
 
 
@@ -40,7 +41,7 @@ app.use(express.urlencoded({extended:true,limit:"10kb"}));
 
 
 
-app.use(express.static(path.join(__dirname,"public")));
+app.use(express.static(path.join(__dirname,process.env.STATE ==="dev"?"public":"dist")));
 
 app.use(compression());
 app.use(unRestrictedauth)

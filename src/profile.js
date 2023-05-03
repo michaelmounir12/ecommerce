@@ -2,6 +2,7 @@ const router = require("express").Router();
 const path = require("path");
 const userModel = require("./models/User");
 const bcrypt = require("bcrypt");
+require("dotenv").config()
 const jwt = require("jsonwebtoken");
 router.get("/profile/:user",getProfilePage)
 
@@ -9,7 +10,7 @@ router.post("/resetpass/:user",resetPass)
 
 function getProfilePage(req,res,next)
 {
-    res.sendFile(path.join(__dirname,"public","HTML","profile.html"));
+    res.sendFile(path.join(__dirname,process.env.STATE ==="dev"?"public":"dist","HTML","profile.html"));
 }
 
 async function resetPass(req,res,next)
