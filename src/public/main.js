@@ -6,7 +6,7 @@ const mainContent = document.querySelector(".main-content");
 const signout = document.querySelector(".signOut");
 
 
-fetch('/HTML/dash.html')
+fetch('/dash.html')
   .then(response => {
     if (!response.ok) {
       throw new Error('Network response was not ok');
@@ -46,7 +46,7 @@ toggle.onclick = function () {
 
 Dash.addEventListener("click",()=>
 {
-  fetch('/HTML/dash.html')
+  fetch('/dash.html')
   .then(response => {
     if (!response.ok) {
       throw new Error('Network response was not ok');
