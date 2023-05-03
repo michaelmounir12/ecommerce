@@ -22,13 +22,13 @@ router.get("/resetpassword/:token",httpResetPassGET)
 
 function httpResetPassGET(req,res)
 {
-    res.status(200).sendFile(path.join(__dirname,process.env.STATE ==="dev"?"public":"..","dist","resetpass.html"));
+    res.status(200).sendFile(path.join(__dirname,process.env.STATE ==="dev"?"public":"../dist/resetpass.html"));
 }
 
 
 function httpForgotPassGET(req,res)
 {
-    res.status(200).sendFile(path.join(__dirname,process.env.STATE ==="dev"?"public":"..","dist","forgotpass.html"));
+    res.status(200).sendFile(path.join(__dirname,process.env.STATE ==="dev"?"public":"../dist/forgotpass.html"));
 }
 
 

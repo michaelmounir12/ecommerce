@@ -29,8 +29,7 @@ function redirect(req,res,next){
 
 
 
-app.set('view engine', "hbs");
-app.set('views', path.join(__dirname,process.env.STATE ==="dev"?"public":"../dist"))
+
 app.use(helmet())
 
 
@@ -43,12 +42,15 @@ app.use(express.urlencoded({extended:true,limit:"10kb"}));
 
 app.use(express.static(path.join(__dirname,process.env.STATE ==="dev"?"public":"../dist")));
 
+app.set('view engine', "hbs");
+app.set('views', path.join(__dirname,process.env.STATE ==="dev"?"public":"../dist"))
+
 app.use(compression());
 app.use(unRestrictedauth)
 
 app.get("/",(req,res)=>
 {
-    res.redirect("/home");
+    res.status(200).redirect("/home");
 })
 
 app.use("/login",redirect,loginRouter);
