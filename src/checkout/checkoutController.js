@@ -92,4 +92,4 @@ async function webHook(req, res){
 
 
 
-module.exports = {postCheckout,cartCheckout,webHook}
+module.exports = {cartCheckout,webHook}
