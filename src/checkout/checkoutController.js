@@ -2,80 +2,13 @@ require("dotenv").config();
 const stripe = require("stripe")(process.env.STRIPE_SCRET_KEY);
 const userModel  = require("../models/User");
 const productModel = require("../models/Product")
+const orderModel = require("../models/Order");
 
-async function postCheckout(req,res,next)
-{  
-
-    let line_items = []
-    let products = req.body;
-    for(let i = 0;i<products.length;i++)
-    {
-        try {
-
-            let pr =  await ProductModel.findById(products[i].ProductId)
-    
-    if(!pr) return res.status(403).json({error:"invalid input"})
-     line_items.push({
-         
-         price_data: {
-           currency: 'egp',
-           product_data: {
-             name:pr.title ,
-             Image,
-
-           },
-           unit_amount: pr.price*100,
-         },
-         quantity: Number(products[i].quantity),
-       
- }
- ) 
-            
-        } catch (error) {
-            res.status(400);
-            return next("something wrong happened")
-        }
-    
-    }
-    try {
-        const session = await stripe.checkout.sessions.create({
-            payment_method_types: ['card'],
-            line_items:line_items 
-              
-        ,
-            mode: 'payment',
-            success_url: 'https://localhost:5000',
-            cancel_url: 'https://localhost:5000',
-          });
-         return res.status(200).json({url:session.url})
-    } catch (error) {
-        res.status(401)
-        return next("something wrong happened...")
-    }
-    
-    
-
-   
-}
 
 async function cartCheckout(req,res,next)
 {
 
-//   {
-         
-//     price_data: {
-//       currency: 'egp',
-//       product_data: {
-//         name:pr.title ,
-//         Image,
 
-//       },
-//       unit_amount: pr.price*100,
-//     },
-//     quantity: Number(products[i].quantity),
-  
-// }
-// console.log(req.body)
 let lineItems = []
 
 if(req.body.src === "cart")
@@ -94,7 +27,7 @@ else if(req.body.src === "buynow")
     try {
          const pro = await productModel.findById(req.body.p)
          if(!pro) return res.status(404).json({message:"Not Found"})
-         lineItems.push({price_data:{currency:'egp',product_data:{name:pro.title,images:[pro.img]},unit_amount:pro.price*1000},quantity:1})
+         lineItems.push({price_data:{currency:'egp',product_data:{name:pro.title,images:[pro.img]},unit_amount:pro.price*100},quantity:1})
     } catch (error) {
         re.status(500);
         return next("something wrong happened try again...");
@@ -131,4 +64,32 @@ else if(req.body.src === "buynow")
 }
 
 
-module.exports = {postCheckout,cartCheckout}
+const endpointSecret = process.env.WEBHOOK_SECRET_KEY;
+
+async function webHook(req, res){
+  const sig = req.headers['stripe-signature'];
+
+  let event;
+
+  try {
+    event = stripe.webhooks.constructEvent(req.body, sig, endpointSecret);
+  } catch (err) {
+    res.status(400).send(`Webhook Error: ${err.message}`);
+    return;
+  }
+
+  // Handle the event
+  switch (event.type) {
+    case 'checkout.session.completed':
+      const Session = event.data.object;
+      console.log(Session)
+      await new orderModel({customer:req.app.locals.user.id,products:Session.line_items,shippingAddress:Session.custom_text,paymentStatus:"paid",paymentDate:Date.now()}).save()
+      break;
+    // ... handle other event types
+    default:
+      console.log(`Unhandled event type ${event.type}`);
+  }}
+
+
+
+module.exports = {postCheckout,cartCheckout,webHook}
