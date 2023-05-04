@@ -13,6 +13,7 @@ const compression = require("compression");
 const profile = require("./profile");
 const DashRouter = require("./dashboard");
 require("dotenv").config();
+const cors = require("cors")
 const cartRouter = require("./cart");
 const signOutRouter = require("./signout");
 const helmet = require("helmet");
@@ -28,7 +29,7 @@ function redirect(req,res,next){
    }
 
 
-
+app.use(cors())
 
 app.use(helmet())
 
