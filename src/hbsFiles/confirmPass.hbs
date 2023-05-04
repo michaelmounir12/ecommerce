@@ -2,56 +2,7 @@
 <html>
 <head>
 	<title>Confirmation Code</title>
-	<style>
-		body {
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
-}
-.container {
-    margin: 0 auto;
-    padding: 20px;
-    max-width: 600px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-}
-h1 {
-    text-align: center;
-    margin-top: 0;
-}
-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-input[type="text"] {
-    padding: 10px;
-    margin-bottom: 10px;
-    border: none;
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-    width: 100%;
-    max-width: 400px;
-    font-size: 16px;
-    font-family: inherit;
-}
-.resend-code {
-    margin-top: 20px;
-    text-align: center;
-}
-.resend-code a {
-    color: #333;
-    text-decoration: underline;
-}
-button[type="submit"] {
-    background-color: #333;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-}
-	</style>
+	<link rel="stylesheet" href="./confirmPass.css">
 </head>
 <body>
 	<div class="container">
@@ -61,34 +12,8 @@ button[type="submit"] {
 			<p></p>
         </div>
 	</div>
-    <script >
-		const email  = document.querySelector(".e").textContent.split(":")[1]
-const p = document.querySelector("p");
-const btn = document.querySelector(".resendbtn");
-
-const url = 'https://ecommerce-new.onrender.com:5000/resendCode';
-
-
-btn.addEventListener("click",()=>
-{
-    fetch(url, {
-     
-    method: "POST",
-     
-    body: JSON.stringify({
-        email:email
-    }),
-     
-    headers: {
-        "Content-type": "application/json; charset=UTF-8"
-    }
-})
-  .then(response => response.json())
-  .then(data =>p.textContent = data.message)
-  .catch(error => console.error(error));
-});
-
-
+    <script src="./resetpass.js" >
+	
 
 
 	</script>
