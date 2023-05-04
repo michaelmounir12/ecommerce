@@ -122,6 +122,6 @@ fetch(url, {
   
   )
   price.textContent =  `${data.totalPrice} EGP`;
-  probtn.addEventListener("click",()=>{window.location.href = `/address?src=cart`})
+  probtn.addEventListener("click",()=>{window.location.href = `https://ecommerce-new.onrender.com/address?src=cart`})
 })
 

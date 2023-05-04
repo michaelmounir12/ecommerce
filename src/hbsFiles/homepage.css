@@ -66,7 +66,6 @@ main {
 	display: flex;
     padding: 20px;
     justify-content: center;
-    min-height: 409px;
 }
 
 h1 {
@@ -160,6 +159,6 @@ footer {
     align-items: center;
     justify-content: center;
 	padding: 20px;
-    height: 80;
+    min-height: 80;
 	text-align: center;
 }

@@ -116,30 +116,13 @@ function createProduct(product)
 
 const url = 'https://ecommerce-new.onrender.com/getproducts';
 
-let skip = 0;
-
-  
-function disableScroll() {
-    document.body.style.overflow = 'hidden';
-  }
-  
-  // Enable scrolling when data has finished loading
-  function enableScroll() {
-    document.body.style.overflow = 'auto';
-  }
 
 window.addEventListener("load",()=>
 {
     fetch(url, {
      
-        method: "POST",
-        body: JSON.stringify({
-            skip:skip
-        }),
-         
-        headers: {
-            "Content-type": "application/json"
-        }
+        method: "GET",
+      
     })
       .then(response => response.json())
       .then(data =>data.forEach((ele)=>
@@ -147,37 +130,6 @@ window.addEventListener("load",()=>
           createProduct(ele)
       })  )
       .catch(error => console.error(error));
-      skip+=5
 })
 
 
-window.addEventListener('scroll', () => {
-    const scrollPosition = window.pageYOffset ;
-    console.log(scrollPosition)
-     let scrol = 70;
-    if(scrollPosition > scrol)
-    {
-        disableScroll()
-        fetch(url, {
-     
-            method: "POST",
-            body: JSON.stringify({
-                skip:skip
-            }),
-             
-            headers: {
-                "Content-type": "application/json"
-            }
-        })
-          .then(response => response.json())
-          .then(data =>data.forEach((ele)=>
-          {
-              createProduct(ele)
-          })  )
-          .catch(error => console.error(error));
-          enableScroll()
-      scrol+=70;
-      skip+=5      
-    }
-
-  });

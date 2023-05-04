@@ -7,7 +7,7 @@ const {auth,roleAuth} = require("../authorization");
 const router = express.Router();
 
 
-router.post("/getproducts",getAllProducts)
+router.get("/getproducts",getAllProducts)
 
 router.get("/home",homepage)
 

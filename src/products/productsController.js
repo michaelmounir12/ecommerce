@@ -23,9 +23,8 @@ const validschema = Joi.object(
 
 async function getAllProducts(req,res,next)
 {
-    let skip = Math.abs(req.body.skip);  
     try {
-         const products = await productModule.find({},"numofreviews title rating image price _id").skip(skip).limit(5);
+         const products = await productModule.find({},"numofreviews title rating image price _id");
        return res.status(200).json(products);
     } catch (error) {
        res.status(500)
