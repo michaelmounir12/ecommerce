@@ -43,7 +43,7 @@ app.use(express.urlencoded({extended:true,limit:"10kb"}));
 app.use(express.static(path.join(__dirname,process.env.STATE ==="dev"?"public":"../dist")));
 
 app.set('view engine', "hbs");
-app.set('views', path.join(__dirname,"../dist"))
+app.set('views', path.join(__dirname,"hbsFiles"))
 
 app.use(compression());
 app.use(unRestrictedauth)
