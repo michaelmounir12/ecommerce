@@ -80,7 +80,7 @@ async function postUser(req,res,next)
 
 function getController(req,res)
 {
-    res.status(200).sendFile(path.join(__dirname,"..",process.env.STATE ==="dev"?"./public/signup.html":"../dist/signup.html","signup.html"))
+    res.status(200).sendFile(path.join(__dirname,"..",process.env.STATE ==="dev"?"public/signup.html":"../dist/signup.html"))
 }
 
 
