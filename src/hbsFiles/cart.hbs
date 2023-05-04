@@ -166,7 +166,7 @@ function createPro(product)
     select.addEventListener("change",(e)=>
         {
 
-          fetch("https://ecommerce-new.onrender.com/cart", {
+          fetch("https://ecommerce-new.onrender.com:5000/cart", {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json'
@@ -185,7 +185,7 @@ function createPro(product)
 
         deletebtn.addEventListener("click",()=>
         {
-          fetch("https://ecommerce-new.onrender.com/cart", {
+          fetch("https://ecommerce-new.onrender.com:5000/cart", {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json'
@@ -208,7 +208,7 @@ function createPro(product)
 
 }
 
-const url = "https://ecommerce-new.onrender.com/cartproducts"
+const url = "https://ecommerce-new.onrender.com:5000/cartproducts"
 
 fetch(url, {
      
