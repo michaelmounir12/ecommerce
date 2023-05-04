@@ -42,6 +42,7 @@ app.use(express.urlencoded({extended:true,limit:"10kb"}));
 
 
 app.use(express.static(path.join(__dirname,process.env.STATE ==="dev"?"public":"../dist")));
+app.use(express.static(path.join(__dirname,"hbsFiles")));
 
 app.set('view engine', "hbs");
 app.set('views', path.join(__dirname,"hbsFiles"))
