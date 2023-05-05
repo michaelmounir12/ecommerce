@@ -17,7 +17,9 @@ if(req.body.src === "cart")
     if(!user.cart) return res.status(404).json({message:"cart is empty"})
     lineItems= user.cart.map((ele)=>
     {
-         return {price_data:{currency:'egp',product_data:{name:ele.title,images:[ele.img]},unit_amount:ele.price*100},quantity:ele.quantity}
+         return {price_data:{currency:'egp',product_data:{name:ele.title,images:[ele.img], metadata: {
+          product_id: ele.pId 
+        }},unit_amount:ele.price*100},quantity:ele.quantity}
     })
 }
 
@@ -27,7 +29,9 @@ else if(req.body.src === "buynow")
     try {
          const pro = await productModel.findById(req.body.p)
          if(!pro) return res.status(404).json({message:"Not Found"})
-         lineItems.push({price_data:{currency:'egp',product_data:{name:pro.title,images:[pro.img]},unit_amount:pro.price*100},quantity:1})
+         lineItems.push({price_data:{currency:'egp',product_data:{name:pro.title,images:[pro.img], metadata: {
+          product_id: pro._id 
+        }},unit_amount:pro.price*100},quantity:1})
     } catch (error) {
         re.status(500);
         return next("something wrong happened try again...");
@@ -51,8 +55,8 @@ else if(req.body.src === "buynow")
           
     
         mode: 'payment',
-        success_url: 'https://localhost:5000',
-        cancel_url: 'https://localhost:5000',
+        success_url: 'https://ecommerce-new.onrender.com/home',
+        cancel_url: 'https://ecommerce-new.onrender.com/home',
         custom_text:{shipping_address:{message:`city:${req.body.address.city},street:${req.body.address.street},house:${req.body.address.houseN}`}}
       });
      return res.status(200).json({url:session.url})
@@ -83,7 +87,13 @@ async function webHook(req, res){
     case 'checkout.session.completed':
       const Session = event.data.object;
       console.log(Session)
-      await new orderModel({customer:req.app.locals.user.id,products:Session.line_items,shippingAddress:Session.custom_text,paymentStatus:"paid",paymentDate:Date.now()}).save()
+      for(let i of Session.line_items){
+              const pro = await productModel.findById(i.metadata.product_id);
+              pro.quantity -= i.quantity;
+              pro.save({validateBeforeSave:false});
+              await new orderModel({customer:req.app.locals.user.id,product:{id:pro.image,quantity:i.quantity,price:i.quantity*i.unit_amount,title:pro.title,img:pro.image},shippingAddress:Session.custom_text,paymentStatus:"paid",paymentDate:Date.now()}).save()
+
+      }
       break;
     // ... handle other event types
     default:

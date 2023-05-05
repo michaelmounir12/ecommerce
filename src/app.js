@@ -12,6 +12,7 @@ const proRouter = require("./product");
 const compression = require("compression");
 const profile = require("./profile");
 const DashRouter = require("./dashboard");
+const orderRouter = require("./order");
 require("dotenv").config();
 const cors = require("cors")
 const cartRouter = require("./cart");
@@ -69,7 +70,7 @@ app.use(signOutRouter)
 
 app.use(auth,cartRouter);
 
-
+app.use(auth,orderRouter);
 
 
 app.use(auth,addressRout,checkoutRouter)

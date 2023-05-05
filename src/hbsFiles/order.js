@@ -13,14 +13,15 @@ function createOrder(order)
     const image = document.createElement("td");
     const quantity = document.createElement("td");
     const price = document.createElement("td");
-    const cancelbtn = document.createElement("button");
     const img = document.createElement("img");
-    const tdBtn = document.createElement("td");
-    cancelbtn.textContent = "Delete";
+    const btn = document.createElement('button');
+    const tdBtn = document.createElement('td');
 
+    btn.textContent = "cancel";
 
+  tdBtn.appendChild(btn);
 
-    pro.id = order.pId;
+    pro.id = order.product.id;
 
 
     pro.appendChild(title);
@@ -30,20 +31,32 @@ function createOrder(order)
     pro.appendChild(price);
     pro.appendChild(tdBtn);
    
-    title.textContent = order.title;
+    title.textContent = order.product.title;
     status.textContent = order.status;
-    price.textContent = order.total;
+    price.textContent = order.product.total;
 
     image.appendChild(img);
-    img.src = order.img;
-    img.alt = order.title;
+    img.src = order.product.img;
+    img.alt = order.product.title;
 
      
-    tdBtn.appendChild(cancelbtn);
 
-    quantity.textContent = order.quantity
+    quantity.textContent = order.product.quantity
    
 
 
 
 }
+
+fetch("https://ecommerce-new.onrender.com/getorders", {
+     
+method: "GET",
+ 
+
+
+})
+.then(response => response.json())
+.then(data =>data.forEach(element => {
+  createOrder(element)  
+}))
+.catch(error => console.error(error));
