@@ -40,9 +40,16 @@ app.use(cookieParser());
 app.use(express.json({limit:"10kb"}));
 app.use(express.urlencoded({extended:true,limit:"10kb"}));
 
+if(process.env.STATE === "dev")
+{
+    app.use(express.static(path.join(__dirname,"public")));
 
+}else
+{
+    app.use(express.static(path.join(__dirname,"..","dist")));
 
-app.use(express.static(path.join(__dirname,process.env.STATE ==="dev"?"public":"dist")));
+}
+
 app.use(express.static(path.join(__dirname,"hbsFiles")));
 
 app.set('view engine', "hbs");
