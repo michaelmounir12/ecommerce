@@ -6,7 +6,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./src/server.js",
     "dev": "nodemon ./src/server.js",
-    "build": "parcel build src/public/*.html -d src/dist"
+    "build": "parcel build src/public/*.html --out-dir src/dist"
   },
   "keywords": [],
   "author": "",
