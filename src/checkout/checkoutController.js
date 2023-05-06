@@ -72,7 +72,7 @@ else if(req.body.src === "buynow")
 async function webHook(req, res){
   const sig = req.headers['stripe-signature'];
   const endpointSecret = process.env.WEBHOOK_SECRET_KEY;
-
+  console.log("webooook")
   let event;
 
   try {

@@ -80,7 +80,7 @@ app.use(auth,cartRouter);
 app.use(auth,orderRouter);
 
 
-app.use(auth,addressRout,checkoutRouter)
+app.use(auth,checkoutRouter)
 
 
 app.use(auth,roleAuth("admin"),DashRouter)
