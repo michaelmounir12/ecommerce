@@ -1,4 +1,5 @@
-const router = require("express").Router();
+const express = require("express");
+const router = express.Router();
 require("dotenv").config();
 const stripe = require("stripe")(process.env.STRIPE_SCRET_KEY);
 
