@@ -72,4 +72,4 @@ else if(req.body.src === "buynow")
 
 
 
-module.exports = {cartCheckout,webHook}
+module.exports = {cartCheckout}
