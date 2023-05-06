@@ -20,6 +20,8 @@ const signOutRouter = require("./signout");
 const helmet = require("helmet");
 const path = require("path");
 const accountConfirmRouter  =require("./confirmPass");
+const stripe = require("stripe")(process.env.STRIPE_SCRET_KEY);
+
 const app = express();
 
 
