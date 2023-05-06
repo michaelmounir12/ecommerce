@@ -23,7 +23,7 @@ async function webHook(req, res){
       case 'checkout.session.completed':
         const Session = event.data.object;
         console.log(Session)
-        for(let i of Session.line_items){
+        for(let i of Session.line_items.data){
                 const pro = await productModel.findById(i.metadata.product_id);
                 pro.quantity -= i.quantity;
                 pro.save({validateBeforeSave:false});
