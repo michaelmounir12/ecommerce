@@ -43,7 +43,7 @@ function createOrder(order)
 
     quantity.textContent = order.product.quantity
    
-
+    body.appendChild(pro)
 
 
 }
