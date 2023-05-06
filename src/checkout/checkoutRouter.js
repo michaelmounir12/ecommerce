@@ -7,6 +7,5 @@ const {cartCheckout,webHook} = require("./checkoutController");
 
 router.post("/checkout",cartCheckout);
 
-router.post('/webhook', express.raw({type: 'application/json'}),webHook)
 
 module.exports = router
