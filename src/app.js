@@ -72,15 +72,6 @@ app.use(proRouter);
 
 app.use(productsRouter)
 
-app.use(auth,profile);
-app.use(signOutRouter)
-
-app.use(auth,cartRouter);
-
-app.use(auth,orderRouter);
-
-
-app.use(auth,addressRout,checkoutRouter)
 
 app.post('/webhook', express.raw({type: 'application/json'}),async function webHook(req, res){
     const sig = req.headers['stripe-signature'];
@@ -115,6 +106,18 @@ app.post('/webhook', express.raw({type: 'application/json'}),async function webH
     }}
     
   )
+
+app.use(auth,profile);
+app.use(signOutRouter)
+
+app.use(auth,cartRouter);
+
+app.use(auth,orderRouter);
+
+
+app.use(auth,addressRout,checkoutRouter)
+
+
 
 
 
