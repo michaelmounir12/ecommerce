@@ -38,6 +38,7 @@ app.use(helmet())
 
 app.use(cookieParser());
 
+app.use(unRestrictedauth)
 
 app.use(auth, webHookRouter)
   
@@ -62,7 +63,6 @@ app.set('view engine', "hbs");
 app.set('views', path.join(__dirname,"hbsFiles"))
 
 app.use(compression());
-app.use(unRestrictedauth)
 
 app.get("/",(req,res)=>
 {
