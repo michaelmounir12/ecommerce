@@ -75,7 +75,7 @@ app.use(proRouter);
 app.use(productsRouter)
 
 
-app.post('/webhook', express.raw({type: 'application/json'}),async function webHook(req, res){
+app.post('/v1/webhook', express.raw({type: 'application/json'}),async function webHook(req, res){
     const sig = req.headers['stripe-signature'];
     const endpointSecret = process.env.WEBHOOK_SECRET_KEY;
     console.log("webooook")
