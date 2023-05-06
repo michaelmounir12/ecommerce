@@ -40,7 +40,7 @@ app.use(cookieParser());
 
 app.use(unRestrictedauth)
 
-app.use(auth, webHookRouter)
+app.use( webHookRouter)
   
 
 
