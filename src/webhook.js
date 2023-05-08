@@ -23,7 +23,9 @@ async function webHook(req, res){
     // Handle the event
     switch (event.type) {
       case 'checkout.session.completed':
-        const session = await stripe.checkout.sessions.retrieve(sessionId);
+        const session = await stripe.checkout.sessions.retrieve(sessionId, {
+          expand: ['line_items']
+        });
         const lineItems = session.line_items;
 
         // Use the line items data as needed
