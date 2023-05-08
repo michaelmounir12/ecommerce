@@ -31,7 +31,7 @@ else if(req.body.src === "buynow")
          if(!pro) return res.status(404).json({message:"Not Found"})
          lineItems.push({price_data:{currency:'egp',product_data:{name:pro.title,images:[pro.img], metadata: {
           product_id: pro._id 
-        }},unit_amount:pro.price*100},quantity:"1"})
+        }},unit_amount:pro.price*100},quantity:1})
     } catch (error) {
         re.status(500);
         return next("something wrong happened try again...");
@@ -57,9 +57,8 @@ else if(req.body.src === "buynow")
         mode: 'payment',
         success_url: 'https://ecommerce-new.onrender.com/home',
         cancel_url: 'https://ecommerce-new.onrender.com/home',
-        metadata:{lineItems},
-        expand: ['line_items'],
-        custom_text:{shipping_address:{message:`city:${req.body.address.city},street:${req.body.address.street},house:${req.body.address.houseN}`}}
+        metadata:{line_items:lineItems},
+       
       });
      return res.status(200).json({url:session.url})
 } catch (error) {
