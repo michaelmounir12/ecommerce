@@ -33,7 +33,7 @@ const orderSchema = new mongoose.Schema({
         type: Date,
         default: null
       }
-    
+    ,shippingAddress:Object
   });
   
   const Order = mongoose.model("Order", orderSchema);
