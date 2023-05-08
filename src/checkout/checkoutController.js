@@ -57,9 +57,9 @@ else if(req.body.src === "buynow")
         mode: 'payment',
         success_url: 'https://ecommerce-new.onrender.com/home',
         cancel_url: 'https://ecommerce-new.onrender.com/home',
-        metadata: {
-          product: Object.entries(lineItems),
-        }
+        // metadata: {
+        //   product: Object.entries(lineItems),
+        // }
        
       });
      return res.status(200).json({url:session.url})
