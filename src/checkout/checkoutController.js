@@ -58,6 +58,8 @@ else if(req.body.src === "buynow")
         success_url: 'https://ecommerce-new.onrender.com/home',
         cancel_url: 'https://ecommerce-new.onrender.com/home',
         metadata:{lineItems},
+        expand: ['line_items'],
+        custom_text:{shipping_address:{message:`city:${req.body.address.city},street:${req.body.address.street},house:${req.body.address.houseN}`}}
       });
      return res.status(200).json({url:session.url})
 } catch (error) {
