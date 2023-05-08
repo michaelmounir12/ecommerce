@@ -14,7 +14,6 @@ async function webHook(req, res){
   
     try {
       event = stripe.webhooks.constructEvent(req.body, sig, endpointSecret);
-      console.log(event);
     } catch (err) {
       res.status(400).send(`Webhook Error: ${err.message}`);
       return;
@@ -32,7 +31,6 @@ async function webHook(req, res){
         // Use the line items data as needed
         console.log(lineItems.data);
       
-        console.log(session)
         for(let i of session.line_items.data){
                 const pro = await productModel.findById(i.metadata.product_id);
                 pro.quantity -= i.quantity;
