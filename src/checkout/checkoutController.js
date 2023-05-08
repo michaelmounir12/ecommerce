@@ -30,7 +30,7 @@ else if(req.body.src === "buynow")
          const pro = await productModel.findById(req.body.p)
          if(!pro) return res.status(404).json({message:"Not Found"})
          lineItems.push({price_data:{currency:'egp',product_data:{name:pro.title,images:[pro.img]},unit_amount:pro.price*100},quantity:1 ,metadata: {
-          product_id: productId,
+          product_id:req.body.p ,
         },})
     } catch (error) {
         re.status(500);
