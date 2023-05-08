@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 require("dotenv").config();
+const productModel = require("./models/Product");
 const stripe = require("stripe")(process.env.STRIPE_SCRET_KEY);
 
 router.post('/v1/webhook', express.raw({type: 'application/json'}),webHook)
