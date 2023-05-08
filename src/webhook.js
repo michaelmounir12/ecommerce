@@ -30,7 +30,7 @@ async function webHook(req, res){
         const lineItems = session.line_items;
 
         // Use the line items data as needed
-        console.log(lineItems);
+        console.log(lineItems.data);
       
         console.log(session)
         for(let i of session.line_items.data){
