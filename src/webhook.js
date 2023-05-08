@@ -8,16 +8,17 @@ router.post('/v1/webhook', express.raw({type: 'application/json'}),webHook)
 
 async function webHook(req, res){
     const sig = req.headers['stripe-signature'];
-    const endpointSecret = process.env.WEBHOOK_SECRET_KEY;
+    const endpointSecret = "whsec_7k2weaGpGD1Rtrv9VzrUF2g5LANloq9a";
     let event;
   
     try {
       event = stripe.webhooks.constructEvent(req.body, sig, endpointSecret);
+      console.log(event);
     } catch (err) {
       res.status(400).send(`Webhook Error: ${err.message}`);
       return;
     }
-  
+    
     // Handle the event
     switch (event.type) {
       case 'checkout.session.completed':

@@ -36,7 +36,6 @@ app.use(cors())
 app.use(helmet())
 
 
-app.use(cookieParser());
 
 app.use(unRestrictedauth)
 
