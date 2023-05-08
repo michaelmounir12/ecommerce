@@ -18,13 +18,19 @@ async function webHook(req, res){
       res.status(400).send(`Webhook Error: ${err.message}`);
       return;
     }
-    
+    const sessionId = event.data.object.id;
+
     // Handle the event
     switch (event.type) {
       case 'checkout.session.completed':
-        const Session = event.data.object;
-        console.log(Session)
-        for(let i of Session.line_items.data){
+        const session = await stripe.checkout.sessions.retrieve(sessionId);
+        const lineItems = session.line_items;
+
+        // Use the line items data as needed
+        console.log(lineItems);
+      
+        console.log(session)
+        for(let i of session.line_items.data){
                 const pro = await productModel.findById(i.metadata.product_id);
                 pro.quantity -= i.quantity;
                 pro.save({validateBeforeSave:false});
