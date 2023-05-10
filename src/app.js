@@ -27,7 +27,7 @@ const app = express();
 function redirect(req,res,next){
     if(req.app.locals.user) {
         return res.status(300).redirect("/home")}
-    else return next()
+    else{return next()} 
    }
 
 
@@ -77,11 +77,11 @@ app.use(resetPassword)
 
 app.use("/register",redirect,registerRouter)
 app.use(accountConfirmRouter)
-app.use(proRouter);
 
 app.use(productsRouter)
 
 
+app.use(proRouter);
 
 
 app.use(auth,profile);
