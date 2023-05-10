@@ -16,7 +16,6 @@ if(req.body.src === "cart")
     if(!user.cart) return res.status(404).json({message:"cart is empty"})
     lineItems= user.cart.map((ele)=>
     {
-        metadata.pID.push(ele.pId)
          return {price_data:{currency:'egp',product_data:{name:ele.title,images:[ele.img]},unit_amount:ele.price*100},quantity:ele.quantity}
     })
 }
@@ -26,7 +25,6 @@ else if(req.body.src === "buynow")
     if(!req.body.p) return res.status(400).json({message:"invalid product"})
     try {
          const pro = await productModel.findById(req.body.p)
-         metadata.pID.push(req.body.p)
 
          if(!pro) return res.status(404).json({message:"Not Found"})
          lineItems.push({price_data:{currency:'egp',product_data:{name:req.body.p,images:[pro.img]},unit_amount:pro.price*100},quantity:1 })
