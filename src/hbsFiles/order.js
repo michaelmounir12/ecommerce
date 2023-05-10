@@ -59,7 +59,7 @@ method: "GET",
 .then(data =>{
   console.log(data)
   if(!data) {body.textContent = "No products yet"}
-  data.forEach(element => {
+  data.orders.forEach(element => {
   createOrder(element) 
 })})
 .catch(error => console.error(error));
