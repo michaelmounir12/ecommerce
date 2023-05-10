@@ -16,7 +16,7 @@ const productSchema = new mongoose.Schema(
         price:{type:Number,required:true},
         image:String,
         status:{type:Boolean,required:true},
-        numofreviews:{type:Number},
+        numofreviews:{type:Number,default:0},
         quantity:{type:Number,required:true},
         rating:{type:Number,default:0},
         reviews:[reviewSchema],
