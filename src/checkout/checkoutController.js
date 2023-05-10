@@ -10,14 +10,15 @@ async function cartCheckout(req,res,next)
 
 
 let lineItems = []
-
+let metadata = {pID:[]}
 if(req.body.src === "cart")
 {
     const user = await userModel.findById(req.app.locals.user.id)
     if(!user.cart) return res.status(404).json({message:"cart is empty"})
     lineItems= user.cart.map((ele)=>
     {
-         return {price_data:{currency:'egp',product_data:{name:ele.pId,images:[ele.img]},unit_amount:ele.price*100},quantity:ele.quantity}
+        metadata.pID.push(ele.pId)
+         return {price_data:{currency:'egp',product_data:{name:ele.title,images:[ele.img]},unit_amount:ele.price*100},quantity:ele.quantity}
     })
 }
 
@@ -26,6 +27,8 @@ else if(req.body.src === "buynow")
     if(!req.body.p) return res.status(400).json({message:"invalid product"})
     try {
          const pro = await productModel.findById(req.body.p)
+         metadata.pID.push(req.body.p)
+
          if(!pro) return res.status(404).json({message:"Not Found"})
          lineItems.push({price_data:{currency:'egp',product_data:{name:req.body.p,images:[pro.img]},unit_amount:pro.price*100},quantity:1 })
     } catch (error) {
@@ -41,6 +44,7 @@ else if(req.body.src === "buynow")
   try {
     const session = await stripe.checkout.sessions.create({
         payment_method_types: ['card'],
+        metadata:metadata,
         line_items:lineItems ,
         
           shipping_address_collection:{
@@ -53,9 +57,7 @@ else if(req.body.src === "buynow")
         mode: 'payment',
         success_url: 'https://ecommerce-new.onrender.com/home',
         cancel_url: 'https://ecommerce-new.onrender.com/home',
-        // metadata: {
-        //   product: Object.entries(lineItems),
-        // }
+        
        
       });
      return res.status(200).json({url:session.url})

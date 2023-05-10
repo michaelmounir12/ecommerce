@@ -30,9 +30,10 @@ async function webHook(req, res){
 
         // Use the line items data as needed
         console.log(lineItems.data);
-      
         for(let i of session.line_items.data){
-                const pro = await productModel.findById(i.description);
+          let j = 0
+
+                const pro = await productModel.findById(session.metadata.pID[j++]);
                 pro.quantity -= i.quantity;
                 pro.save({validateBeforeSave:false});
                 await new orderModel({customer:req.app.locals.user.id,product:{id:pro.image,quantity:i.quantity,price:i.quantity*i.unit_amount,title:pro.title,img:pro.image},shippingAddress:session.shipping_details.address,paymentStatus:"paid",paymentDate:Date.now()}).save()
