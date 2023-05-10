@@ -10,7 +10,6 @@ async function cartCheckout(req,res,next)
 
 
 let lineItems = []
-let metadata = {pID:[]}
 if(req.body.src === "cart")
 {
     const user = await userModel.findById(req.app.locals.user.id)
@@ -44,7 +43,6 @@ else if(req.body.src === "buynow")
   try {
     const session = await stripe.checkout.sessions.create({
         payment_method_types: ['card'],
-        metadata:metadata,
         line_items:lineItems ,
         
           shipping_address_collection:{
