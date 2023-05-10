@@ -31,7 +31,7 @@ else if(req.body.src === "buynow")
          if(!pro) return res.status(404).json({message:"Not Found"})
          lineItems.push({price_data:{currency:'egp',product_data:{name:req.body.p,images:[pro.img]},unit_amount:pro.price*100},quantity:1 })
     } catch (error) {
-        re.status(500);
+        res.status(500);
         return next("something wrong happened try again...");
     }
    
