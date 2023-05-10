@@ -60,6 +60,7 @@ if(process.env.STATE === "dev")
 }
 
 app.use(express.static(path.join(__dirname,"hbsFiles")));
+app.use(express.static(path.join(__dirname,"photos")));
 
 app.set('view engine', "hbs");
 app.set('views', path.join(__dirname,"hbsFiles"))

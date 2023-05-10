@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const orderModel = require("./models/Order");
-router.get("/getorders",getOrders)
-
+router.get("/getorders",getOrders);
+router.get("/orders/:id",GETOrderPage);
 async function getOrders(req,res,next)
 {
     try {
@@ -14,5 +14,10 @@ async function getOrders(req,res,next)
  
 }
 
+function GETOrderPage(req,res,next)
+{
+   res.status(200).render("order.hbs")
+ 
+}
 
 module.exports = router;
