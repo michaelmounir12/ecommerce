@@ -2,7 +2,6 @@ require("dotenv").config();
 const stripe = require("stripe")(process.env.STRIPE_SCRET_KEY);
 const userModel  = require("../models/User");
 const productModel = require("../models/Product")
-const orderModel = require("../models/Order");
 
 
 async function cartCheckout(req,res,next)
