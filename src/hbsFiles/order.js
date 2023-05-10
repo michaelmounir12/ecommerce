@@ -33,7 +33,7 @@ function createOrder(order)
    
     title.textContent = order.product.title;
     status.textContent = order.status;
-    price.textContent = order.product.total;
+    price.textContent = order.product.price;
 
     image.appendChild(img);
     img.src = order.product.img;
@@ -56,7 +56,10 @@ method: "GET",
 
 })
 .then(response => response.json())
-.then(data =>data.forEach(element => {
-  createOrder(element)  
-}))
+.then(data =>{
+  console.log(data)
+  if(!data) {body.textContent = "No products yet"}
+  data.forEach(element => {
+  createOrder(element) 
+})})
 .catch(error => console.error(error));
