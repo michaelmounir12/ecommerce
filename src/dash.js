@@ -16,12 +16,12 @@ async function dash(req,res,next)
      for(let i of orders)
      {
         earning +=i.product.price;
-       let val =  customer.find({name:i.name,country:i.shippingAddress.country})
-       if(!val)
-       {
-                customer.push({name:i.name,country:i.shippingAddress.country})
+    //    let val =  customer.find({name:i.name,country:i.shippingAddress.country})
+    //    if(!val)
+    //    {
+    //             customer.push({name:i.name,country:i.shippingAddress.country})
 
-       }
+    //    }
         products.push({name:i.product.title,price:i.product.price,payStatus:i.paymentStatus, delStatus:i.status})
      }
      console.log(earning,numofsales,customer,products)
