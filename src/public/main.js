@@ -9,7 +9,6 @@ const signout = document.querySelector(".signOut");
 
 
 
-console.log(numofsales,earning)
 
 function createSale(order)
 {
