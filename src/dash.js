@@ -15,7 +15,7 @@ async function dash(req,res,next)
      console.log(count,orders); 
      for(i of orders)
      {
-        earning +=i.Product.price;
+        earning +=i.product.price;
        let val =  customer.find({name:i.name,country:i.shippingAddress.country})
        if(!val)
        {
