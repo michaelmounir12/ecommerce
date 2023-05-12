@@ -22,7 +22,7 @@ function createSale(order)
      const span = document.createElement("span")
 
      name.textContent = order.name;
-     price.textContent = order.price;
+     price.textContent = `${order.price} EGP`;
      payStatus.textContent = order.payStatus;
      span.classList.add("status",order.delStatus)
      span.textContent  = order.delStatus;
@@ -87,7 +87,7 @@ fetch('/dash.html')
   .then(data => {
     console.log(data)
     numofsales.textContent = data.numofsales;
-    earning.textContent = data.earning;
+    earning.textContent =`${data.earning} EGP` ;
     data.customers.forEach((ele)=>
     {
        createCustomer(ele);
