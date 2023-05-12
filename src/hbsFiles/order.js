@@ -39,7 +39,14 @@ function createOrder(order)
         console.error('There was a problem with the fetch operation:', error);
       });
     })
-  tdBtn.appendChild(btn);
+    if(order.status === "pending")
+    {
+        tdBtn.appendChild(btn);
+
+    }else
+    {
+      tdBtn.innerHTML = "<p>we'll try our best to cancel your order</p>";
+    }
 
 
 
