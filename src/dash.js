@@ -13,7 +13,7 @@ async function dash(req,res,next)
      const count = await orderModel.countDocuments();
      numofsales = count;
      console.log(count,orders); 
-     for(i of orders)
+     for(let i of orders)
      {
         earning +=i.product.price;
        let val =  customer.find({name:i.name,country:i.shippingAddress.country})
