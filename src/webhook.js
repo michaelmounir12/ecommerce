@@ -38,7 +38,7 @@ async function webHook(req, res){
                 const pro = await productModel.findById(i.description);
                 pro.quantity -= i.quantity;
                 pro.save({validateBeforeSave:false});
-                await new orderModel({customer:req.app.locals.user.id,product:{id:pro._id,quantity:i.quantity,price:Number(i.quantity)*Number(pro.price),title:pro.title,img:pro.image},shippingAddress:session.shipping_details.address,paymentStatus:"paid",paymentDate:Date.now()}).save()
+                await new orderModel({customer:req.app.locals.user.id,name:req.app.locals.user.name,product:{id:pro._id,quantity:i.quantity,price:Number(i.quantity)*Number(pro.price),title:pro.title,img:pro.image},shippingAddress:session.shipping_details.address,orderId:i.id,paymentStatus:"paid",paymentDate:Date.now()}).save()
   
         }
 

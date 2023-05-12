@@ -63,9 +63,11 @@ header {
 }
 
 main {
+	min-height: fit-content;
 	display: flex;
     padding: 20px;
     justify-content: center;
+
 }
 
 h1 {

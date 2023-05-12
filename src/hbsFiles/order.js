@@ -1,7 +1,7 @@
 const body = document.querySelector("tbody");
 
 
-
+const url =" https://ecommerce-new.onrender.com"
 
 
 
@@ -16,12 +16,31 @@ function createOrder(order)
     const img = document.createElement("img");
     const btn = document.createElement('button');
     const tdBtn = document.createElement('td');
+    pro.id = order.id;
 
     btn.textContent = "cancel";
-
+    btn.addEventListener("click",()=>
+    {
+      fetch(`${url}/cancelorder`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({id:pro.id})
+      })
+      .then(response => {
+        if(response.ok) {
+          tdBtn.innerHTML = "<p>we'll try our best to cancel your order</p>";
+        }
+        throw new Error('Network response was not ok.');
+      })
+    
+      .catch(error => {
+        console.error('There was a problem with the fetch operation:', error);
+      });
+    })
   tdBtn.appendChild(btn);
 
-    pro.id = order.product.id;
 
 
     pro.appendChild(title);
@@ -48,7 +67,7 @@ function createOrder(order)
 
 }
 
-fetch("https://ecommerce-new.onrender.com/getorders", {
+fetch(`${url}/getorders`, {
      
 method: "GET",
  

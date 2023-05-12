@@ -15,6 +15,7 @@ const DashRouter = require("./dashboard");
 const orderRouter = require("./order");
 require("dotenv").config();
 const cors = require("cors")
+const dashRouter = require("./dash");
 const cartRouter = require("./cart");
 const signOutRouter = require("./signout");
 const helmet = require("helmet");
@@ -100,7 +101,7 @@ app.use(auth,addressRout,checkoutRouter)
 
 app.use(auth,roleAuth("admin"),DashRouter)
 
-
+app.use(auth,roleAuth("admin"),dashRouter)
 
 
 app.use((error,req,res)=>
