@@ -8,7 +8,7 @@ const signout = document.querySelector(".signOut");
 
 
 
-const url = "https://ecommerce-new.onreder.com";
+const url = "https://ecommerce-new.onrender.com";
 
 const numofsales = document.querySelector("#sales");
 const earning = document.querySelector("#earn");
