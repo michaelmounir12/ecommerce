@@ -8,12 +8,6 @@ const signout = document.querySelector(".signOut");
 
 
 
-const url = "https://ecommerce-new.onrender.com";
-
-const numofsales = document.querySelector("#sales");
-const earning = document.querySelector("#earn");
-const tbody = document.querySelector("tbody");
-const table = document.querySelector("table");
 
 console.log(numofsales,earning)
 
@@ -57,7 +51,33 @@ table.appendChild(tr)
        
 }
 
-fetch(`${url}/dash`)
+
+
+
+fetch('/dash.html')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.text();
+  })
+  .then(html => {
+    // Use the HTML content here
+      mainContent.innerHTML = html;
+  })
+  .catch(error => {
+    console.error('There was a problem fetching the HTML:', error);
+  });
+
+  const url = "https://ecommerce-new.onrender.com";
+
+  const numofsales = document.querySelector("#sales");
+  const earning = document.querySelector("#earn");
+  const tbody = document.querySelector("tbody");
+  const table = document.querySelector("table");
+  
+
+  fetch(`${url}/dash`)
   .then(response => {
     if (response.ok) {
       return response.json(); // or response.text() for plain text response
@@ -83,22 +103,6 @@ fetch(`${url}/dash`)
     console.error('There was a problem with the fetch operation:', error);
   });
 
-
-
-fetch('/dash.html')
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    return response.text();
-  })
-  .then(html => {
-    // Use the HTML content here
-      mainContent.innerHTML = html;
-  })
-  .catch(error => {
-    console.error('There was a problem fetching the HTML:', error);
-  });
 
 
 function activeLink() {
