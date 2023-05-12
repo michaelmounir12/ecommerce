@@ -6,7 +6,7 @@ async function dash(req,res,next)
 {
     let earning=0,numofsales;
     let customer = [];
-    let products = []
+    let products = [];
 
     try {
          const orders  = await orderModel.find({status:"pending"},"customer product shippingAddress status");
@@ -15,7 +15,7 @@ async function dash(req,res,next)
      console.log(count); 
      for(i of orders)
      {
-        earning +=Product.price;
+        earning +=i.Product.price;
        let val =  customer.find({name:i.name,country:i.shippingAddress.country})
        if(!val)
        {
