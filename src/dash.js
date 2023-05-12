@@ -28,6 +28,7 @@ async function dash(req,res,next)
 
      return res.status(200).json({earning:earning,numofsales:numofsales,customers:customer,products:products})
     } catch (error) {
+        console.log(error)
       res.status(500).json({message:"something wrong happened try later..."})   
     }
     
