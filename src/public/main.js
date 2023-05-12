@@ -10,45 +10,7 @@ const signout = document.querySelector(".signOut");
 
 
 
-function createSale(order)
-{
 
-     const tr = document.createElement("tr")
-     const name = document.createElement("td")
-     const price = document.createElement("td")
-     const payStatus = document.createElement("td")
-     const delStatus = document.createElement("td")
-     const span = document.createElement("span")
-
-     name.textContent = order.name;
-     price.textContent = `${order.price} EGP`;
-     payStatus.textContent = order.payStatus;
-     span.classList.add("status",order.delStatus)
-     span.textContent  = order.delStatus;
-     delStatus.appendChild(span);
-
-     tr.appendChild(name)
-     tr.appendChild(price)
-     tr.appendChild(payStatus)
-     tr.appendChild(delStatus)
-
-     tbody.appendChild(tr);
-
-}
-
-function createCustomer(customer)
-{
-
-const tr = document.createElement("tr")
-const td = document.createElement("td")
-const h4 = document.createElement("h4")
-h4.innerHTML = `${customer.name} <br> <span>${customer.country}</span>`
-td.appendChild(h4)
-tr.appendChild(td)
-table.appendChild(tr)
-
-       
-}
 
 
 
@@ -68,15 +30,56 @@ fetch('/dash.html')
     console.error('There was a problem fetching the HTML:', error);
   });
 
-  const url = "https://ecommerce-new.onrender.com";
 
   const numofsales = document.querySelector("#sales");
   const earning = document.querySelector("#earn");
-  const tbody = document.querySelector("tbody");
-  const table = document.querySelector("table");
-  
+  const tbody = document.querySelector("#bod");
+  const table = document.querySelector("#tab");
 
-  fetch(`${url}/dash`)
+
+
+  function createSale(order)
+  {
+  
+       const tr = document.createElement("tr")
+       const name = document.createElement("td")
+       const price = document.createElement("td")
+       const payStatus = document.createElement("td")
+       const delStatus = document.createElement("td")
+       const span = document.createElement("span")
+  
+       name.textContent = order.name;
+       price.textContent = `${order.price} EGP`;
+       payStatus.textContent = order.payStatus;
+       span.classList.add("status",order.delStatus)
+       span.textContent  = order.delStatus;
+       delStatus.appendChild(span);
+  
+       tr.appendChild(name)
+       tr.appendChild(price)
+       tr.appendChild(payStatus)
+       tr.appendChild(delStatus)
+  
+       tbody.appendChild(tr);
+  
+  }
+  
+  function createCustomer(customer)
+  {
+  
+  const tr = document.createElement("tr")
+  const td = document.createElement("td")
+  const h4 = document.createElement("h4")
+  h4.innerHTML = `${customer.name} <br> <span>${customer.country}</span>`
+  td.appendChild(h4)
+  tr.appendChild(td)
+  table.appendChild(tr)
+  
+         
+  }  
+  
+console.log(numofsales,earning,table,table)
+  fetch("https://ecommerce-new.onrender.com/dash")
   .then(response => {
     if (response.ok) {
       return response.json(); // or response.text() for plain text response
