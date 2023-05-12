@@ -15,6 +15,8 @@ const earning = document.querySelector("#earn");
 const tbody = document.querySelector("tbody");
 const table = document.querySelector("table");
 
+console.log(numofsales,earning)
+
 function createSale(order)
 {
 
@@ -63,6 +65,7 @@ fetch(`${url}/dash`)
     throw new Error('Network response was not ok.');
   })
   .then(data => {
+    console.log(data)
     numofsales.textContent = data.numofsales;
     earning.textContent = data.earning;
     data.customers.forEach((ele)=>
