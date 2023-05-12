@@ -24,6 +24,7 @@ async function dash(req,res,next)
        }
         products.push({name:i.product.title,price:i.product.price,payStatus:i.paymentStatus, delStatus:i.status})
      }
+     console.log(earning,numofsales,customer,products)
 
      return res.status(200).json({earning:earning,numofsales:numofsales,customers:customer,products:products})
     } catch (error) {
