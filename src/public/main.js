@@ -72,7 +72,6 @@ table.appendChild(tr)
        
 }  
 
-console.log(numofsales,earning,table,table)
 fetch("https://ecommerce-new.onrender.com/dash")
 .then(response => {
   if (response.ok) {
@@ -189,7 +188,6 @@ table.appendChild(tr)
        
 }  
 
-console.log(numofsales,earning,table,table)
 fetch("https://ecommerce-new.onrender.com/dash")
 .then(response => {
   if (response.ok) {
@@ -198,7 +196,6 @@ fetch("https://ecommerce-new.onrender.com/dash")
   throw new Error('Network response was not ok.');
 })
 .then(data => {
-  console.log(data)
   numofsales.textContent = data.numofsales;
   earning.textContent =`${data.earning} EGP` ;
   data.customers.forEach((ele)=>
@@ -269,7 +266,7 @@ addProduct.addEventListener("click",()=>
               }
           })
             .then(response => response.json())
-            .then(data =>console.log(data))
+            .then()
             .catch(error => console.error(error));
       
       })

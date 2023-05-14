@@ -53,7 +53,6 @@ async function addProduct(req,res,next)
     // console.log(price)
     price = Number(price);
     quantity = Number(quantity);
-    console.log(quantity)
     const {error} = validschema.validate({quantity:quantity,category:category,price:price,desc:description,title:title,image:image_url})
 
     if(error)

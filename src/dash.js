@@ -12,7 +12,6 @@ async function dash(req,res,next)
          const orders  = await orderModel.find({status:"pending"},"customer paymentStatus name product shippingAddress status");
      const count = await orderModel.countDocuments();
      numofsales = count;
-     console.log(count,orders); 
      for(let i of orders)
      {
         earning +=i.product.price;
