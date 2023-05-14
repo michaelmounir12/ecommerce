@@ -67,9 +67,9 @@ app.get("/",(req,res)=>
 {
     res.status(200).redirect("/home");
 })
+app.use(resetPassword)
 
 app.use("/login",loginRouter);
-app.use(resetPassword)
 
 app.use("/register",registerRouter)
 app.use(accountConfirmRouter)
