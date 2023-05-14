@@ -26,9 +26,11 @@ const app = express();
 
 
 function redirect(req,res,next){
-    if(!req.app.locals.user) {
-        return next()}
-    else{res.status(300).redirect("/")} 
+    if(req.app.locals.user) {
+        res.status(300).redirect("/")}
+    else{
+        next()
+    } 
    }
 
 
@@ -73,10 +75,10 @@ app.get("/",(req,res)=>
     res.status(200).redirect("/home");
 })
 
-app.use("/login",loginRouter);
+app.use("/login",redirect,loginRouter);
 app.use(resetPassword)
 
-app.use("/register",registerRouter)
+app.use("/register",redirect,registerRouter)
 app.use(accountConfirmRouter)
 
 app.use(productsRouter)
