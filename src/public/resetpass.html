@@ -55,7 +55,7 @@ button[type="submit"]:hover, button[type="reset"]:hover {
       const pass = document.querySelector("#new-password")
       btn.addEventListener("click",()=>
       {
-           fetch('/api/endpoint', {
+           fetch(window.location.href, {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json'
