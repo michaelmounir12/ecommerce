@@ -25,13 +25,6 @@ const webHookRouter = require("./webhook");
 const app = express();
 
 
-function redirect(req,res,next){
-    if(req.app.locals.user) {
-        res.status(300).redirect("/")}
-    else{
-        next()
-    } 
-   }
 
 
 app.use(cors())
@@ -75,10 +68,10 @@ app.get("/",(req,res)=>
     res.status(200).redirect("/home");
 })
 
-app.use("/login",redirect,loginRouter);
+app.use("/login",loginRouter);
 app.use(resetPassword)
 
-app.use("/register",redirect,registerRouter)
+app.use("/register",registerRouter)
 app.use(accountConfirmRouter)
 
 app.use(productsRouter)
