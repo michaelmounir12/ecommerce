@@ -41,7 +41,7 @@ button[type="submit"]:hover, button[type="reset"]:hover {
     </style>
   </head>
   <body>
-    <form action="/resetpassword/:token" method="post">
+    <form>
       <label for="new-password">New Password:</label>
       <input type="password" id="new-password" name="password" required>
       <br>
@@ -50,5 +50,24 @@ button[type="submit"]:hover, button[type="reset"]:hover {
       <br>
       <button type="submit">Submit</button>
     </form>
+    <script>
+      const btn = document.querySelector("button");
+      const pass = document.querySelector("#new-password")
+      btn.addEventListener("click",()=>
+      {
+           fetch('/api/endpoint', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({ 
+   password:pass.value
+  })
+})
+.then()
+.catch(error => console.error(error));
+      })
+   
+    </script>
   </body>
 </html>
