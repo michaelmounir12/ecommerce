@@ -76,7 +76,7 @@ async function resetPass(req,res,next)
 
     
     
-    const user =await userModel.findOne({resetPassword:hashedToken,resetPasswordExpiryDate:{$gt:Date.now()}});
+    const user =await userModel.findOne({resetPassword:hashedToken});
   
     if(!user)
     {
