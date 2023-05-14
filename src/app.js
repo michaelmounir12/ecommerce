@@ -26,9 +26,9 @@ const app = express();
 
 
 function redirect(req,res,next){
-    if(req.app.locals.user.id) {
-        return res.status(300).redirect("/home")}
-    else{return next()} 
+    if(!req.app.locals.user) {
+        return next()}
+    else{res.status(300).redirect("/")} 
    }
 
 
