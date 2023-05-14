@@ -73,10 +73,10 @@ app.get("/",(req,res)=>
     res.status(200).redirect("/home");
 })
 
-app.use("/login",redirect,loginRouter);
+app.use("/login",loginRouter);
 app.use(resetPassword)
 
-app.use("/register",redirect,registerRouter)
+app.use("/register",registerRouter)
 app.use(accountConfirmRouter)
 
 app.use(productsRouter)
