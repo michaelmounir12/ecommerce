@@ -70,13 +70,14 @@ async function forgotPass(req,res,next)
 async function resetPass(req,res,next)
 {
     // console.log(req.body.password)
-    const token = req.params.token.trim()
+    const token = req.params.token
+    console.log(token)
     const hashedToken = crypto.createHash("sha256").update(token).digest("hex");
     const password = req.body.password;
 
     
     
-    const user =await userModel.findOne({resetPassword:hashedToken});
+    const user =await userModel.findOne({resetPassword:hashedToken,resetPasswordExpiryDate:{$gt:Date.now()}});
   
     if(!user)
     {
