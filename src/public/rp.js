@@ -12,6 +12,6 @@ const btn = document.querySelector("button");
    password:pass.value
   })
 })
-.then()
+.then(data => window.location.href = "https://ecommerce.onrender.com/login")
 .catch(error => console.error(error));
       })
