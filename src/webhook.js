@@ -11,7 +11,7 @@ router.post('/v1/webhook', express.raw({type: 'application/json'}),webHook)
 
 async function webHook(req, res){
     const sig = req.headers['stripe-signature'];
-    const endpointSecret = "whsec_7k2weaGpGD1Rtrv9VzrUF2g5LANloq9a";
+    const endpointSecret = process.env.WEBHOOK_SECRET_KEY;
     let event;
   
     try {
