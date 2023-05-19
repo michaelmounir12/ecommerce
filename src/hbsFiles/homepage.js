@@ -92,7 +92,7 @@ function createProduct(product)
     }
 
     cartbtn.addEventListener("click",()=>{
-        fetch(`https://ecommerce-new.onrender.com/cart`,{
+        fetch(`https://ecommerce-azxx.onrender.com/cart`,{
             method:"POST",
             body: JSON.stringify({
                 pId:productdiv.id
@@ -114,7 +114,7 @@ function createProduct(product)
 
 }
 
-const url = 'https://ecommerce-new.onrender.com/getproducts';
+const url = 'https://ecommerce-azxx.onrender.com/getproducts';
 
 
 window.addEventListener("load",()=>

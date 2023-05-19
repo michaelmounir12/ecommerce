@@ -50,8 +50,8 @@ else if(req.body.src === "buynow")
           
     
         mode: 'payment',
-        success_url: 'https://ecommerce-new.onrender.com/home',
-        cancel_url: 'https://ecommerce-new.onrender.com/home',
+        success_url: 'https://ecommerce-azxx.onrender.com/home',
+        cancel_url: 'https://ecommerce-azxx.onrender.com/home',
         
        
       });

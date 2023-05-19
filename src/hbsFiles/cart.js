@@ -64,7 +64,7 @@ function createPro(product)
     select.addEventListener("change",(e)=>
         {
 
-          fetch("https://ecommerce-new.onrender.com/cart", {
+          fetch("https://ecommerce-azxx.onrender.com/cart", {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json'
@@ -83,7 +83,7 @@ function createPro(product)
 
         deletebtn.addEventListener("click",()=>
         {
-          fetch("https://ecommerce-new.onrender.com/cart", {
+          fetch("https://ecommerce-azxx.onrender.com/cart", {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json'
@@ -106,7 +106,7 @@ function createPro(product)
 
 }
 
-const url = "https://ecommerce-new.onrender.com/cartproducts"
+const url = "https://ecommerce-azxx.onrender.com/cartproducts"
 
 fetch(url, {
      
@@ -122,6 +122,6 @@ fetch(url, {
   
   )
   price.textContent =  `${data.totalPrice} EGP`;
-  probtn.addEventListener("click",()=>{window.location.href = `https://ecommerce-new.onrender.com/address?src=cart`})
+  probtn.addEventListener("click",()=>{window.location.href = `https://ecommerce-azxx.onrender.com/address?src=cart`})
 })
 

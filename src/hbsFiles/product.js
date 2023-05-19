@@ -11,7 +11,7 @@ const cont = document.querySelector(".product-container")
 
 
 let proId = cont.id
-const url = `https://ecommerce-new.onrender.com/productCred/${proId}`;
+const url = `https://ecommerce-azxx.onrender.com/productCred/${proId}`;
 
 
 

@@ -6,7 +6,7 @@ const params = new URLSearchParams(window.location.search);
 
         sub.addEventListener("click",()=>
         {
-             fetch("https://ecommerce-new.onrender.com/checkout", {
+             fetch("https://ecommerce-azxx.onrender.com/checkout", {
      
     method: "POST",
      

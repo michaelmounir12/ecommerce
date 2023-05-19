@@ -72,7 +72,7 @@ table.appendChild(tr)
        
 }  
 
-fetch("https://ecommerce-new.onrender.com/dash")
+fetch("https://ecommerce-azxx.onrender.com/dash")
 .then(response => {
   if (response.ok) {
     return response.json(); // or response.text() for plain text response
@@ -188,7 +188,7 @@ table.appendChild(tr)
        
 }  
 
-fetch("https://ecommerce-new.onrender.com/dash")
+fetch("https://ecommerce-azxx.onrender.com/dash")
 .then(response => {
   if (response.ok) {
     return response.json(); // or response.text() for plain text response

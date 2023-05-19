@@ -1,7 +1,7 @@
 const body = document.querySelector("tbody");
 
 
-const url =" https://ecommerce-new.onrender.com"
+const url =" https://ecommerce-azxx.onrender.com"
 
 
 

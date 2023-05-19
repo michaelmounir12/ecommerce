@@ -3,7 +3,7 @@ const email  = document.querySelector(".e").textContent.split(":")[1]
 const p = document.querySelector("p");
 const btn = document.querySelector(".resendbtn");
 
-const url = 'https://ecommerce-new.onrender.com/resendCode';
+const url = 'https://ecommerce-azxx.onrender.com/resendCode';
 
 
 btn.addEventListener("click",()=>

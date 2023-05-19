@@ -1,4 +1,4 @@
-const url = "https://ecommerce-new.onreder.com";
+const url = "https://ecommerce-azxx.onrender.com";
 
 const numofsales = document.querySelector("#sales");
 const earning = document.querySelector("#earn");
