@@ -28,7 +28,7 @@ const userSchema = new mongoose.Schema(
         shippingAddress:{city:String,street:String,houseNum:Number}   ,
         numOfCartProducts:{type:Number,default:0},
         accountConfirm:{type:Boolean,default:false},
-        accountConfirmCode:{type:Number,default:undefined}  
+        accountConfirmCode:{type:String,default:undefined}  
     },
     {timestamps:true}
 )
