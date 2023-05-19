@@ -13,7 +13,7 @@ async function checkToken(req,res,next)
     if(!user) return res.status(404).json({error:"no such user"});
     user.accountConfirm = true;
     user.save({validateBeforeSave:true});
-    res.status(300).redirect("/home");
+    res.status(300).redirect("/login");
   } catch (e) {
     res.status(500);
     return next("something wrong happened try agian");
