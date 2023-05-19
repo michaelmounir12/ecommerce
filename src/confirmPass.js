@@ -1,7 +1,7 @@
 const {sendEmail,emailClass }= require("./email");
 const router = require("express").Router();
 const userModel = require("./models/User");
-router.post("/confirmaccount/:token",checkToken)
+router.get("/confirmaccount/:token",checkToken)
 router.post("/resendCode",resendCode);
 
 
