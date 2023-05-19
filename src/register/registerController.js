@@ -45,9 +45,7 @@ async function postUser(req,res,next)
     try {
         const pass = await bcrypt.hash(password,10)
         const user =  await new userModel({name:name,password:pass,email:email,passwordConfirm:pass,role:"customer"}).save();
-        console.log(user);
         const token = user.confirmAccount();
-        console.log(token);
         user.save({validateBeforeSave:false})
         link = `${req.protocol}://${req.get('host')}/confirmaccount/${token}`
         

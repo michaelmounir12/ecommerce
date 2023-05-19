@@ -71,7 +71,6 @@ async function resetPass(req,res,next)
 {
     // console.log(req.body.password)
     const token = req.params.token
-    console.log(req.params)
     const hashedToken = crypto.createHash("sha256").update(token).digest("hex");
     console.log(hashedToken)
     const password = req.body.password;

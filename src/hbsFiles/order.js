@@ -83,7 +83,6 @@ method: "GET",
 })
 .then(response => response.json())
 .then(data =>{
-  console.log(data)
   if(!data) {body.textContent = "No products yet"}
   data.orders.forEach(element => {
   createOrder(element) 

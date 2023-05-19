@@ -2,7 +2,6 @@ const btn = document.querySelector("button");
       const pass = document.querySelector("#new-password")
       btn.addEventListener("click",()=>
       {
-        console.log(window.location.href)
            fetch(window.location.href, {
   method: 'POST',
   headers: {

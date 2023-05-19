@@ -80,7 +80,6 @@ fetch("https://ecommerce-azxx.onrender.com/dash")
   throw new Error('Network response was not ok.');
 })
 .then(data => {
-  console.log(data)
   numofsales.textContent = data.numofsales;
   earning.textContent =`${data.earning} EGP` ;
   data.customers.forEach((ele)=>
